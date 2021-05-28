@@ -13,6 +13,26 @@ export default function Counter({ $app }) {
 
   const init = () => {
     render();
+    registerEventHandler();
+  };
+
+  const increaseValue = () => {
+    const value = document.querySelector(".count-display");
+    if (value.value >= 12) return;
+    value.value = Number(value.value) + 1;
+  };
+  const decreaseValue = () => {
+    const value = document.querySelector(".count-display");
+    if (value.value <= 8) return;
+    value.value = Number(value.value) - 1;
+  };
+
+  const registerEventHandler = () => {
+    const plusButton = document.querySelector(".plus-button");
+    const minusButton = document.querySelector(".minus-button");
+
+    plusButton.addEventListener("click", increaseValue);
+    minusButton.addEventListener("click", decreaseValue);
   };
 
   init();
